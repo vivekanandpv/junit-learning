@@ -34,5 +34,8 @@ class InvoiceRepositoryTest {
 
     @Test
     void getInvoice() {
+        InvoiceRepository repository = new InvoiceRepository();
+        assertThrows(RuntimeException.class, () -> repository.simplyThrowException());
+        assertThrows(RuntimeException.class, () -> repository.simplyThrowException(), "Some exception");
     }
 }

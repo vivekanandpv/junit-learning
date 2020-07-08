@@ -29,4 +29,8 @@ public class InvoiceRepository {
                 .filter(i -> i.getId() == id)
                 .findFirst();
     }
+
+    public Invoice simplyThrowException() {
+        throw new RuntimeException("Some exception");
+    }
 }
