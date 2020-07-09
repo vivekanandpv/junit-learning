@@ -1,6 +1,7 @@
 package com.example.junitlearning.services;
 
 import com.example.junitlearning.domain.Invoice;
+import com.example.junitlearning.repositories.IRepository;
 import com.example.junitlearning.repositories.InvoiceRepository;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +9,9 @@ import java.util.List;
 
 @Service
 public class InvoiceService {
-    private final InvoiceRepository invoiceRepository;
+    private final IRepository invoiceRepository;
 
-    public InvoiceService(InvoiceRepository invoiceRepository) {
+    public InvoiceService(IRepository invoiceRepository) {
         this.invoiceRepository = invoiceRepository;
     }
 

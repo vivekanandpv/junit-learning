@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class InvoiceRepository {
-    private List<Invoice> invoices;
+public class InvoiceRepository implements IRepository {
+    private final List<Invoice> invoices;
 
-    public InvoiceRepository() {
-        this.invoices = new ArrayList<>();
+    public InvoiceRepository(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
     public List<Invoice> getList() {
