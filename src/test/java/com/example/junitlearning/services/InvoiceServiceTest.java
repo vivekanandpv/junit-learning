@@ -42,6 +42,6 @@ class InvoiceServiceTest {
                 .thenReturn(Optional.empty());
 
         InvoiceService service = new InvoiceService(invoiceRepository);
-        assertThrows(RuntimeException.class, () -> service.get(1), "Invoice not found");
+        assertThrows(RuntimeException.class, () -> service.get(1));
     }
 }
