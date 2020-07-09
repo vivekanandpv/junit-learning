@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("InvoiceRepository should")
 class InvoiceRepositoryTest {
 
     @BeforeEach
@@ -19,6 +20,7 @@ class InvoiceRepositoryTest {
     }
 
     @Test
+    @DisplayName("return a not null list when getList() is called")
     void getListReturnsANotNullList() {
         InvoiceRepository repository = new InvoiceRepository();
         List<Invoice> list = repository.getList();
@@ -32,10 +34,21 @@ class InvoiceRepositoryTest {
     }
 
     @Test
+    @DisplayName("correctly add the invoices to the list")
     void addingInvoiceAddsItToTheList() {
         InvoiceRepository repository = new InvoiceRepository();
-        repository.addInvoice(new Invoice());
-        assertEquals(1, repository.getList().size());
+
+        assertAll(
+                () -> assertEquals(0, repository.getList().size()),
+                () -> {
+                    repository.addInvoice(new Invoice());
+                    assertEquals(1, repository.getList().size());
+                },
+                () -> {
+                    repository.addInvoice(new Invoice());
+                    assertEquals(2, repository.getList().size());
+                }
+        );
     }
 
     @Test
