@@ -22,16 +22,16 @@ public class InvoiceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getById(@PathVariable long id) {
+    public ResponseEntity<Invoice> getById(@PathVariable long id) {
         try {
-            return new ResponseEntity(this.invoiceService.get(id), HttpStatus.OK);
+            return ResponseEntity.ok(this.invoiceService.get(id));
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody Invoice invoice) {
+    public ResponseEntity<?> create(@RequestBody Invoice invoice) {
         this.invoiceService.add(invoice);
         return ResponseEntity.ok().build();
     }
